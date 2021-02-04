@@ -93,14 +93,12 @@ module.exports = {
     },
 
     logout: function (req,res) {
-        if (req.session.usuarioLogueado != undefined) {
-            res.redirect("/");
+        req.session.destroy();
+        if (req.cookies.userComidita) {
+            res.cookie('idUsuario', '', { maxAge: -1 })
         }
-        req.session.usuarioLogueado = undefined;
-        res.clearCookie('idUsuario');
-        return res.redirect('/');
+        res.redirect('/')
     },
-
     comentarios: function (req, res) {
         if (req.session.usuarioLogueado == undefined) {
             res.redirect("/");
