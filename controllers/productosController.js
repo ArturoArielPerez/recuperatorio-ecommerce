@@ -83,7 +83,7 @@ module.exports = {
         })
         .then(result => {
             console.log(result);
-            return res.redirect('/')
+            return res.redirect('/productos/misProductos')
 
         })
         .catch(errores => {
